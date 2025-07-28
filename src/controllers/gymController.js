@@ -98,3 +98,14 @@ export const deleteGym = async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 };
+
+// Obtener el gimnasio de un usuario
+export const getGymByUser = async (req, res) => {
+  try {
+    const gym = await Gym.findOne({ user_id: req.user.id });
+    if (!gym) return res.status(404).json({ message: "No tienes un gimnasio creado" });
+    res.json(gym);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};

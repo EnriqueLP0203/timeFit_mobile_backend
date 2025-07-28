@@ -67,6 +67,10 @@ export const login = async (req, res) => {
 
     const token = await createdAccessToken({ id: userFound.id });
 
+    // Buscar si el usuario tiene un gym creado
+    const Gym = (await import("../models/Gym.js")).default;
+    const gym = await Gym.findOne({ user_id: userFound._id });
+
     res.json({
       token,
       user: {
@@ -76,6 +80,8 @@ export const login = async (req, res) => {
         createdAt: userFound.createdAt,
         updatedAt: userFound.updatedAt,
       },
+      hasGym: !!gym,
+      gym: gym || null
     });
   } catch (error) {
     res.status(500).json({ message: error.message });

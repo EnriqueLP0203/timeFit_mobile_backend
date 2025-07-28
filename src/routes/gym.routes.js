@@ -5,6 +5,7 @@ import {
   getGymById,
   updateGym,
   deleteGym,
+  getGymByUser
 } from "../controllers/gymController.js";
 import { authRequired } from '../middlewares/validateToken.js';
 
@@ -24,5 +25,8 @@ router.put("/:id", authRequired, updateGym);
 
 // Eliminar un gimnasio
 router.delete("/:id", authRequired, deleteGym);
+
+// Obtener el gimnasio del usuario autenticado
+router.get("/usuario/migym", authRequired, getGymByUser);
 
 export default router;
