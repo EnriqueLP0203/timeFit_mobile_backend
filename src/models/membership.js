@@ -4,7 +4,7 @@ const membershipSchema = new mongoose.Schema(
   {
     gym_id: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Gym",
+      ref: "gym",
       required: true,
     },
     nombre: {

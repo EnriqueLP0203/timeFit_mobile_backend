@@ -39,6 +39,11 @@ const customerSchema = new mongoose.Schema({
       trim: true,
     }
   },
+  gym_id: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "gym",
+    required: true,
+  },
   membership_id: {
     type: mongoose.Schema.Types.ObjectId,
     ref: "Membership",

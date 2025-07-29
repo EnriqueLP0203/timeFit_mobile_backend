@@ -32,6 +32,11 @@ const userSchema = new mongoose.Schema({
         required: true
     },
 
+    active_gym_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "gym",
+        default: null
+    }
 
 }, {
     timestamps: true

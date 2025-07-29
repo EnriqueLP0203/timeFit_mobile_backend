@@ -53,4 +53,4 @@ const gymSchema = new mongoose.Schema(
   }
 );
 
-export default mongoose.model("Gym", gymSchema);
+export default mongoose.model("gym", gymSchema);

@@ -1,24 +1,32 @@
-import {Router} from 'express'
+import { Router } from "express";
+import {
+  createMembership,
+  getAllMemberships,
+  getMembershipById,
+  updateMembership,
+  deleteMembership,
+  getMembershipsByGym
+} from "../controllers/membershipController.js";
 import { authRequired } from '../middlewares/validateToken.js';
-import { createMembership, getAllMemberships, getMembershipById, updateMembership, deleteMembership } from '../controllers/membershipController.js';
 
 const router = Router();
 
-//crear membresia
-router.post('/crear', authRequired, createMembership)
+// Crear una membresía
+router.post("/crear", authRequired, createMembership);
 
+// Obtener todas las membresías del usuario
+router.get("/obtener", authRequired, getAllMemberships);
 
-//Obtener todas las membresias
-router.get('/obtener', authRequired, getAllMemberships)
+// Obtener membresías por gym específico
+router.get("/gym/:gymId", authRequired, getMembershipsByGym);
 
-//Obtener membresia por ID
-router.get('/:id', authRequired, getMembershipById)
+// Obtener una membresía por ID
+router.get("/:id", authRequired, getMembershipById);
 
+// Actualizar una membresía
+router.put("/:id", authRequired, updateMembership);
 
-//actualizar membreisa
-router.put('/:id', authRequired, updateMembership)
-
-//eliminar membreisa
-router.delete('/:id', authRequired, deleteMembership)
+// Eliminar una membresía
+router.delete("/:id", authRequired, deleteMembership);
 
 export default router;
